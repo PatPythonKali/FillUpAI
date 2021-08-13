@@ -14,14 +14,16 @@ from var.names import fname
 from var.surname import lname
 from var.others import *
 
-# First Name Randomizer
-first_name = random.choice(fname)
-second_name = random.choice(lname)
+
 
 # Chrome Start
 driver = webdriver.Chrome('./chromedriver')
 
 for x in range(100):
+    # First Name Randomizer
+    first_name = random.choice(fname)
+    second_name = random.choice(lname)
+
     # Full Screen
     # driver.maximize_window()
     driver.get("https://ffcii.com/registration")
@@ -56,10 +58,13 @@ for x in range(100):
     driver.find_element_by_name("position_id").send_keys("Others")
 
     # Upload File
-    driver.find_element_by_id("actual-btn").send_keys("/home/ubuntu/PycharmProjects/FillUpAI/pictures/kula.jpg")
+    driver.find_element_by_id("actual-btn").send_keys(f"/home/ubuntu/PycharmProjects/FillUpAI/pictures/download{random.randint(1,17)}.jpg")
 
+    break
     # Submit Form
     # driver.find_element_by_class_name("submit").click()
+
+
 
 
 
