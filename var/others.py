@@ -8,6 +8,15 @@ status = ["Single",
           "Divorced",
           "Widowed",
          ]
+position = ["Vice-President",
+            "Secretary",
+            "President",
+            "Treasurer",
+            "Auditor",
+            "P.R.O.",
+            "Committee Chairman",
+            "Others"]
+
 countries = ["USA",
 "CANADA",
 "JAPAN",

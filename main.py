@@ -55,9 +55,7 @@ for x in range(100):
     driver.find_element_by_name("chapterlocation_id").send_keys("Abroad")
     time.sleep(1)
     driver.find_element_by_name("chapter_id").send_keys(random.choice(countries))
-    driver.find_element_by_name("position_id").send_keys("Others")
-
-
+    driver.find_element_by_name("position_id").send_keys(random.choice(position))
 
     # Upload File
     driver.find_element_by_id("actual-btn").send_keys(f"/home/ubuntu/PycharmProjects/FillUpAI/pictures/download{random.randint(1,17)}.jpg")
