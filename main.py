@@ -46,23 +46,28 @@ for x in range(100):
     test = driver.find_element_by_name("country").send_keys("United States")
     time.sleep(2)
     driver.find_element_by_name("state").send_keys("California")
-    time.sleep(2)
+    time.sleep(1)
     driver.find_element_by_name("city").send_keys(random.choice(cities))
 
     driver.find_element_by_name("facebookname").send_keys(f"{first_name.lower()}{second_name.lower()}")
     driver.find_element_by_name("emailaddress").send_keys(f"{first_name.lower()}{second_name.lower()}@{random.choice(email)}")
 
     driver.find_element_by_name("chapterlocation_id").send_keys("Abroad")
-    time.sleep(2)
+    time.sleep(1)
     driver.find_element_by_name("chapter_id").send_keys(random.choice(countries))
     driver.find_element_by_name("position_id").send_keys("Others")
+
+
 
     # Upload File
     driver.find_element_by_id("actual-btn").send_keys(f"/home/ubuntu/PycharmProjects/FillUpAI/pictures/download{random.randint(1,17)}.jpg")
 
-    break
+    # break
     # Submit Form
-    # driver.find_element_by_class_name("submit").click()
+    driver.find_element_by_xpath('//*[@id="form_members"]/div[7]/button').click()
+    time.sleep(10)
+
+
 
 
 
