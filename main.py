@@ -58,7 +58,7 @@ for x in range(100):
     driver.find_element_by_name("position_id").send_keys(random.choice(position))
 
     # Upload File
-    driver.find_element_by_id("actual-btn").send_keys(f"/home/ubuntu/PycharmProjects/FillUpAI/pictures/download{random.randint(1,17)}.jpg")
+    driver.find_element_by_id("actual-btn").send_keys(f"/home/ubuntu/PycharmProjects/FillUpAI/pictures/download{random.randint(1,26)}.jpg")
 
     # break
     # Submit Form
