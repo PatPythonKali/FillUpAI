@@ -29,7 +29,7 @@ for x in range(10000):
     ca = ra.real_random_address()
 
     driver.get("https://ffcii.com")
-    time.sleep(1)
+    time.sleep(2)
     try:
         driver.find_element_by_xpath('//*[@id="access"]').send_keys("FFCI-7CN140", Keys.ENTER)
 
@@ -58,9 +58,9 @@ for x in range(10000):
     driver.find_element_by_name("gender").send_keys(random.choice(gender))
     driver.find_element_by_name("status").send_keys(random.choice(status))
     driver.find_element_by_name("address").send_keys(ca["address1"] + " " +
-      ca["city"] + " " +
-      ca["state"] + " " +
-      ca["postalCode"] )
+                                                     ca["city"] + " " +
+                                                     ca["state"] + " " +
+                                                     ca["postalCode"])
 
     # Location
     time.sleep(1)
@@ -84,14 +84,12 @@ for x in range(10000):
     driver.find_element_by_id("actual-btn").send_keys(
         f"/home/ubuntu/PycharmProjects/FillUpAI/pictures/download{random.randint(1, 46)}.jpg")
 
-    # break
     # Submit Form
     driver.find_element_by_xpath('//*[@id="form_members"]/div[7]/button').click()
 
-    time.sleep(2)
+    time.sleep(3)
     users_created += 1
     print(f"Total Dummies Created: {users_created}")
-
 
 # End Timer
 end = time.time()
