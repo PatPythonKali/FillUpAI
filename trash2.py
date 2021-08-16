@@ -1,13 +1,16 @@
-# Imports
+# Global Imports
 import time
 
 # Start Timer
 start = time.time()
 
+# Global Imports
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 import random
+
+import random_address as ra
 
 # Local Imports
 from var.names import fname
@@ -22,8 +25,8 @@ for x in range(10000):
     first_name = random.choice(fname)
     second_name = random.choice(lname)
 
-    # Full Screen
-    # driver.maximize_window()
+    # Initialize Fake Address
+    ca = ra.real_random_address()
 
     driver.get("https://ffcii.com")
     time.sleep(1)
@@ -32,6 +35,8 @@ for x in range(10000):
 
     except Exception:
         print("Splash Error")
+        splash_error += 1
+        print(f"Splash Error: {splash_error}")
         continue
 
     # First and Last Name
@@ -39,6 +44,8 @@ for x in range(10000):
         driver.find_element_by_name('firstname').send_keys(first_name)
     except Exception:
         print("Name Error")
+        name_error += 1
+        print(f"Name Error: {name_error}")
         continue
 
     driver.find_element_by_name('lastname').send_keys(second_name)
@@ -50,12 +57,15 @@ for x in range(10000):
     driver.find_element_by_name("age").send_keys(random.randint(21, 98))
     driver.find_element_by_name("gender").send_keys(random.choice(gender))
     driver.find_element_by_name("status").send_keys(random.choice(status))
-    driver.find_element_by_name("address").send_keys(random.choice(address))
+    driver.find_element_by_name("address").send_keys(ca["address1"] + " " +
+      ca["city"] + " " +
+      ca["state"] + " " +
+      ca["postalCode"] )
 
     # Location
     time.sleep(1)
     test = driver.find_element_by_name("country").send_keys("United States")
-    time.sleep(4)
+    time.sleep(2)
     driver.find_element_by_name("state").send_keys("California")
     time.sleep(1)
     driver.find_element_by_name("city").send_keys(random.choice(cities))
@@ -76,9 +86,11 @@ for x in range(10000):
     # break
     # Submit Form
     driver.find_element_by_xpath('//*[@id="form_members"]/div[7]/button').click()
+
+    time.sleep(2)
     users_created += 1
     print(f"Total Dummies Created: {users_created}")
-    time.sleep(5)
+
 
 # End Timer
 end = time.time()
