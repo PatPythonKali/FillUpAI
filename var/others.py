@@ -1,3 +1,5 @@
+users_created = 0
+
 gender = ["Male",
           "Female",
           "LGBT"]
