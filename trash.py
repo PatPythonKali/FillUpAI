@@ -65,9 +65,10 @@ for x in range(10000):
     # Location
     time.sleep(1)
     test = driver.find_element_by_name("country").send_keys("United States")
-    time.sleep(2)
+
+    time.sleep(3)
     driver.find_element_by_name("state").send_keys("California")
-    time.sleep(1)
+    time.sleep(2)
     driver.find_element_by_name("city").send_keys(random.choice(cities))
 
     driver.find_element_by_name("facebookname").send_keys(f"{first_name.lower()}{second_name.lower()}")
