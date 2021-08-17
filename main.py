@@ -35,7 +35,7 @@ for x in range(10000):
     except Exception:
         print("Splash Error")
         splash_error += 1
-        print(f"Splash Error: {splash_error}")
+        print(f"Total Splash Error: {splash_error}")
         continue
 
     # First and Last Name
@@ -44,7 +44,7 @@ for x in range(10000):
     except Exception:
         print("Name Error")
         name_error += 1
-        print(f"Name Error: {name_error}")
+        print(f"Total Name Error: {name_error}")
         continue
 
     driver.find_element_by_name('lastname').send_keys(second_name)
