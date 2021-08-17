@@ -10,6 +10,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 import random
 import random_address as ra
+import os
 
 # Local Imports
 from var.names import fname
@@ -28,7 +29,7 @@ for x in range(10000):
     ca = ra.real_random_address()
 
     driver.get("https://ffcii.com")
-    time.sleep(1)
+    time.sleep(2)
     try:
         driver.find_element_by_xpath('//*[@id="access"]').send_keys("FFCI-7CN140", Keys.ENTER)
 
@@ -56,10 +57,18 @@ for x in range(10000):
     driver.find_element_by_name("age").send_keys(random.randint(21, 98))
     driver.find_element_by_name("gender").send_keys(random.choice(gender))
     driver.find_element_by_name("status").send_keys(random.choice(status))
-    driver.find_element_by_name("address").send_keys(ca["address1"] + " " +
-      ca["city"] + " " +
-      ca["state"] + " " +
-      ca["postalCode"] )
+
+    try:
+        driver.find_element_by_name("address").send_keys(ca["address1"] + " " +
+          ca["city"] + " " +
+          ca["state"] + " " +
+          ca["postalCode"])
+
+    except Exception:
+        print("Date Error")
+        name_error += 1
+        print(f"Total Date Error: {date_error}")
+        continue
 
     # Location
     time.sleep(1)
@@ -80,8 +89,9 @@ for x in range(10000):
     driver.find_element_by_name("position_id").send_keys(random.choice(position))
 
     # Upload File
-    driver.find_element_by_id("actual-btn").send_keys(
-        f"/home/ubuntu/PycharmProjects/FillUpAI/pictures/download{random.randint(1, 46)}.jpg")
+    driver.find_element_by_id("actual-btn").send_keys(os.path.abspath(
+        f"pictures/download{random.randint(1, 47)}.jpg"))
+
 
     # Submit Form
     driver.find_element_by_xpath('//*[@id="form_members"]/div[7]/button').click()
@@ -90,7 +100,9 @@ for x in range(10000):
     try:
         driver.find_element_by_xpath('/html/body/div/div[2]/div[2]/div[2]/h4')
         users_created += 1
-        print(f"Total Dummies Created: {users_created}")
+        total_ffci = ''
+        total_ffci = driver.find_element_by_xpath('/html/body/div/div[2]/div[2]/div[2]/h5[1]/b').text
+        print(f"Total Dummies Created: {users_created} | {total_ffci.str[10:]}")
 
     except NoSuchElementException:
         failed += 1
