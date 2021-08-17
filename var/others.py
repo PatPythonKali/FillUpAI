@@ -1,6 +1,7 @@
 users_created = 0
 splash_error = 0
 name_error = 0
+failed = 0
 
 gender = ["Male",
           "Female",

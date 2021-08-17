@@ -7,6 +7,7 @@ start = time.time()
 # Global Imports
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException
 
 import random
 
@@ -68,7 +69,7 @@ for x in range(10000):
 
     time.sleep(3)
     driver.find_element_by_name("state").send_keys("California")
-    time.sleep(2)
+    time.sleep(1)
     driver.find_element_by_name("city").send_keys(random.choice(cities))
 
     driver.find_element_by_name("facebookname").send_keys(f"{first_name.lower()}{second_name.lower()}")
@@ -84,14 +85,18 @@ for x in range(10000):
     driver.find_element_by_id("actual-btn").send_keys(
         f"/home/ubuntu/PycharmProjects/FillUpAI/pictures/download{random.randint(1, 46)}.jpg")
 
-    # break
     # Submit Form
     driver.find_element_by_xpath('//*[@id="form_members"]/div[7]/button').click()
 
-    time.sleep(2)
-    users_created += 1
-    print(f"Total Dummies Created: {users_created}")
+    time.sleep(1)
+    try:
+        driver.find_element_by_xpath('/html/body/div/div[2]/div[2]/div[2]/h4')
+        users_created += 1
+        print(f"Total Dummies Created: {users_created}")
 
+    except NoSuchElementException:
+        failed += 1
+        print(f"Total Failed Accounts: {failed}")
 
 # End Timer
 end = time.time()
