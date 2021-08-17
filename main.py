@@ -8,9 +8,7 @@ start = time.time()
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
-
 import random
-
 import random_address as ra
 
 # Local Imports
