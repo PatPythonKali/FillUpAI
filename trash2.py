@@ -100,9 +100,8 @@ for x in range(10000):
     try:
         driver.find_element_by_xpath('/html/body/div/div[2]/div[2]/div[2]/h4')
         users_created += 1
-        total_ffci = ''
         total_ffci = driver.find_element_by_xpath('/html/body/div/div[2]/div[2]/div[2]/h5[1]/b').text
-        print(f"Total Dummies Created: {users_created} | {total_ffci.str[10:]}")
+        print(f"Total Dummies Created: {users_created} | {total_ffci[10:]}")
 
     except NoSuchElementException:
         failed += 1
